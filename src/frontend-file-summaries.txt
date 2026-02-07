@@ -1,0 +1,5 @@
+{
+  "frontend/src/App.tsx": "Single-page Valentine's Day interactive component that asks Mr. Bingus to be a Valentine with Yes/No buttons, where the No button evades clicks and spawns 🥺 emojis, and Yes reveals a success view with a meme image and romantic message.",
+  "frontend/src/index.css": "Complete styling with romantic pink/red/white Valentine's Day theme using OKLCH colors, custom animations for floating hearts, emoji pops, and button interactions optimized for mobile touch.",
+  "frontend/tailwind.config.js": "Extended Tailwind configuration with Valentine-themed color tokens, serif font family for romantic typography, and custom utilities for the Valentine's Day aesthetic."
+}

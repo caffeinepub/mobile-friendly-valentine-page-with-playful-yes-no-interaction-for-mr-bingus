@@ -1,0 +1,99 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-mobile-friendly-interactive-page-whose-only-purpose-is-to-ask-mr-bingus-will-you-be-my-valentine-and-present-exactly-two-options-yes-and-no",
+      "featureTitle": "Create a single, mobile-friendly interactive page whose only purpose is to ask: \"Mr. Bingus, will you be my Valentine?\" and present exactly two options: \"Yes\" and \"No\".",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/main.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-no-button-behavior-so-it-evades-interaction-when-the-user-attempts-to-click-tap-it-the-button-should-move-away-to-a-new-on-screen-position-and-multiple-emojis-should-pop-up-around-the-screen-to-make-clicking-no-effectively-impossible",
+      "featureTitle": "Implement the \"No\" button behavior so it evades interaction: when the user attempts to click/tap it, the button should move away to a new on-screen position, and multiple '🥺' emojis should pop up around the screen to make clicking \"No\" effectively impossible.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-yes-flow-when-the-user-clicks-taps-yes-replace-the-question-options-with-a-success-view-that-displays-a-cute-meme-image-and-the-exact-text-aww-good-choice",
+      "featureTitle": "Implement the \"Yes\" flow: when the user clicks/taps \"Yes\", replace the question/options with a success view that displays a cute meme image and the exact text: \"aww good choice 🥰\".",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-consistent-romantic-valentine-theme-using-a-pink-white-red-color-scheme-with-a-coherent-simple-visual-style-suitable-for-a-single-purpose-romantic-prompt-e-g-a-valentine-card-look-with-hearts-paper-textures-and-ensure-all-interactions-animations-feel-playful-but-not-distracting",
+      "featureTitle": "Apply a consistent romantic Valentine theme using a pink/white/red color scheme with a coherent, simple visual style suitable for a single-purpose romantic prompt (e.g., a Valentine card look with hearts/paper textures), and ensure all interactions/animations feel playful but not distracting.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-required-generated-image-s-to-the-frontend-as-static-assets-under-frontend-public-assets-generated-and-reference-them-directly-from-the-ui-do-not-serve-images-via-the-backend",
+      "featureTitle": "Add the required generated image(s) to the frontend as static assets under `frontend/public/assets/generated/` and reference them directly from the UI (do not serve images via the backend).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

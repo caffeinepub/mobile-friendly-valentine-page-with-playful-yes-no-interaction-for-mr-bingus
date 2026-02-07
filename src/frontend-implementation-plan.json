@@ -1,0 +1,113 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Mobile-friendly Valentine prompt for Mr. Bingus (Yes/No with playful evade + success meme)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a single mobile-friendly page that asks the Valentine question with exactly two actions: Yes and No.",
+      "acceptanceCriteria": [
+        "On initial load, the page shows the question \"Mr. Bingus, will you be my Valentine?\".",
+        "Exactly two actionable buttons are visible: \"Yes\" and \"No\".",
+        "Layout is usable on common iOS mobile browser sizes (no horizontal scrolling; tap targets are comfortably sized)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page Valentine prompt UI in React with the exact prompt text and exactly two actionable buttons (\"Yes\" and \"No\"). If available, use the shadcn-ui Button component to provide consistent button styling and accessible tap targets; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Ensure the app renders the new single-page App as the only interactive experience (no extra routes/pages), keeping mobile-first layout constraints in mind."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Make the No button evade taps/clicks and spawn multiple 🥺 emojis around the screen on each attempt.",
+      "acceptanceCriteria": [
+        "Attempting to tap/click the \"No\" button causes it to move to a different position within the visible viewport (not off-screen).",
+        "Each \"No\" attempt spawns multiple visible '🥺' emojis at varied positions around the screen.",
+        "The \"No\" button continues to evade repeated attempts (not a one-time move).",
+        "The interaction works with touch input (iOS Safari) as well as mouse input."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Implement the evasive \"No\" behavior: on pointer/touch interaction (e.g., onPointerDown/onTouchStart and/or onPointerEnter for hover), reposition the button within viewport-safe bounds and append multiple 🥺 emoji pop elements at randomized positions; keep the button always visible and avoid layout jank on mobile."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add CSS animations/styles for emoji pops (e.g., fade/float/scale) and a lightweight overlay container so emojis appear around the screen without causing horizontal scrolling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "On Yes, replace the prompt with a success view that shows the meme image and the exact caption text.",
+      "acceptanceCriteria": [
+        "Tapping/clicking \"Yes\" transitions to a new view/state that hides the \"Yes\"/\"No\" buttons.",
+        "The success view displays the meme image (bundled as a static asset) and the exact caption text: \"aww good choice 🥰\".",
+        "The success view is centered and mobile-friendly (image scales responsively without overflowing)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add the \"Yes\" flow state: hide the question/buttons after activation and render a centered success view that displays the static meme image and the exact caption text \"aww good choice 🥰\"; ensure the image is responsive (max-width constraints) for iOS Safari."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add success-view layout styling (centering, responsive image constraints) so the meme image scales down on small screens and never overflows the viewport."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply a cohesive Valentine theme (pink/white/red) with a simple card-like style and playful, non-distracting animations.",
+      "acceptanceCriteria": [
+        "Primary UI colors are pink/white/red (no default/unstyled template look).",
+        "Typography and spacing feel like a simple Valentine card (clear hierarchy: prompt > buttons).",
+        "Animations (No-button evade + emoji pops) match the theme and do not cause severe layout jank on mobile."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Implement the Valentine theme using existing global styling entry points: set a pink/white/red palette, card-like container styling (rounded corners/shadow), heart/paper-like background texture (CSS-based), and tuned animation timing to stay playful without being distracting."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme tokens (colors/animations) as needed to support a consistent Valentine palette and subtle motion utilities used by the page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add the required generated image under frontend/public/assets/generated and reference it directly from the UI.",
+      "acceptanceCriteria": [
+        "Generated image file(s) exist under `frontend/public/assets/generated/`.",
+        "The UI loads the image(s) via a static path and displays them in the \"Yes\" success view.",
+        "No backend endpoints are added/required to fetch or generate the image at runtime."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/valentine-yes-meme.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated static meme image asset at the exact required path: frontend/public/assets/generated/valentine-yes-meme.dim_1024x1024.png."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Reference and render the generated image from the success view via its static asset path (frontend/public/assets/generated/valentine-yes-meme.dim_1024x1024.png) and ensure it is displayed together with the exact caption text."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        
+        /* Valentine's Day Pink/Red/White Theme */
+        --background: 0.98 0.02 10;
+        --foreground: 0.25 0.08 10;
+        
+        --valentine-primary: 0.65 0.22 10;
+        --valentine-accent: 0.75 0.18 350;
+        --valentine-muted: 0.55 0.05 10;
+        
+        --card: 1 0 0;
+        --card-foreground: 0.25 0.08 10;
+        --popover: 1 0 0;
+        --popover-foreground: 0.25 0.08 10;
+        --primary: 0.65 0.22 10;
+        --primary-foreground: 1 0 0;
+        --secondary: 0.95 0.03 350;
+        --secondary-foreground: 0.25 0.08 10;
+        --muted: 0.95 0.02 10;
+        --muted-foreground: 0.55 0.05 10;
+        --accent: 0.75 0.18 350;
+        --accent-foreground: 1 0 0;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.90 0.03 350;
+        --input: 0.90 0.03 350;
+        --ring: 0.65 0.22 10;
+    }
+
+    .dark {
+        --background: 0.15 0.05 10;
+        --foreground: 0.98 0.02 10;
+        
+        --valentine-primary: 0.75 0.20 350;
+        --valentine-accent: 0.85 0.15 10;
+        --valentine-muted: 0.60 0.05 350;
+        
+        --card: 0.20 0.05 10;
+        --card-foreground: 0.98 0.02 10;
+        --popover: 0.20 0.05 10;
+        --popover-foreground: 0.98 0.02 10;
+        --primary: 0.75 0.20 350;
+        --primary-foreground: 0.15 0.05 10;
+        --secondary: 0.25 0.05 350;
+        --secondary-foreground: 0.98 0.02 10;
+        --muted: 0.25 0.05 10;
+        --muted-foreground: 0.60 0.05 350;
+        --accent: 0.85 0.15 10;
+        --accent-foreground: 0.15 0.05 10;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: linear-gradient(135deg, 
+            oklch(0.98 0.02 10) 0%, 
+            oklch(0.95 0.03 350) 50%, 
+            oklch(0.98 0.02 10) 100%);
+        background-attachment: fixed;
+    }
+}
+
+@layer components {
+    .valentine-card {
+        @apply bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl;
+        border: 3px solid oklch(var(--valentine-primary) / 0.2);
+        background: linear-gradient(to bottom, 
+            oklch(1 0 0 / 0.95), 
+            oklch(0.98 0.02 350 / 0.95)
+        );
+    }
+
+    .success-card {
+        @apply bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl;
+        border: 3px solid oklch(var(--valentine-primary) / 0.2);
+        background: linear-gradient(to bottom, 
+            oklch(1 0 0 / 0.95), 
+            oklch(0.98 0.02 350 / 0.95)
+        );
+    }
+
+    .valentine-button {
+        @apply px-8 py-4 rounded-full font-bold text-lg transition-all duration-300;
+        @apply shadow-lg hover:shadow-xl active:scale-95;
+        @apply flex items-center gap-2 justify-center;
+        min-width: 140px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .valentine-button-yes {
+        background: linear-gradient(135deg, 
+            oklch(var(--valentine-primary)), 
+            oklch(var(--valentine-accent))
+        );
+        color: white;
+        border: 3px solid oklch(var(--valentine-primary) / 0.3);
+    }
+
+    .valentine-button-yes:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px oklch(var(--valentine-primary) / 0.4);
+    }
+
+    .valentine-button-no {
+        background: oklch(0.95 0.02 10);
+        color: oklch(var(--valentine-muted));
+        border: 2px solid oklch(var(--border));
+    }
+
+    .valentine-button-no:hover {
+        background: oklch(0.92 0.03 10);
+    }
+
+    .emoji-pop {
+        @apply absolute text-4xl pointer-events-none z-20;
+        animation: emoji-pop 2s ease-out forwards;
+    }
+
+    .hearts-background {
+        @apply absolute inset-0 overflow-hidden pointer-events-none;
+        opacity: 0.15;
+    }
+
+    .floating-heart {
+        @apply absolute text-valentine-primary w-8 h-8;
+        animation: float-up linear infinite;
+        opacity: 0;
+    }
+}
+
+@layer utilities {
+    .text-valentine-primary {
+        color: oklch(var(--valentine-primary));
+    }
+
+    .text-valentine-accent {
+        color: oklch(var(--valentine-accent));
+    }
+
+    .text-valentine-muted {
+        color: oklch(var(--valentine-muted));
+    }
+}
+
+@keyframes emoji-pop {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5) translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-heart {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-pulse-heart {
+    animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+}

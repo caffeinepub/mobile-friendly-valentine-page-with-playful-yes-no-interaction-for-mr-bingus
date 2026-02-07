@@ -1,0 +1,115 @@
+{
+  "kind": "build_request",
+  "title": "Mobile-friendly Valentine page with playful Yes/No interaction for Mr. Bingus",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single, mobile-friendly interactive page whose only purpose is to ask: \"Mr. Bingus, will you be my Valentine?\" and present exactly two options: \"Yes\" and \"No\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a mobile friendly interactive webpage for my boyfriend... to ask him mr.bingus to be my valentine.\nThere should be two options yes or no"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On initial load, the page shows the question \"Mr. Bingus, will you be my Valentine?\".",
+        "Exactly two actionable buttons are visible: \"Yes\" and \"No\".",
+        "Layout is usable on common iOS mobile browser sizes (no horizontal scrolling; tap targets are comfortably sized)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the \"No\" button behavior so it evades interaction: when the user attempts to click/tap it, the button should move away to a new on-screen position, and multiple '🥺' emojis should pop up around the screen to make clicking \"No\" effectively impossible.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "When he clicks on no, it should move away with ‘🥺’ emoji popping up all around the screen so that he cannot click on it, forcing him to click on yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Attempting to tap/click the \"No\" button causes it to move to a different position within the visible viewport (not off-screen).",
+        "Each \"No\" attempt spawns multiple visible '🥺' emojis at varied positions around the screen.",
+        "The \"No\" button continues to evade repeated attempts (not a one-time move).",
+        "The interaction works with touch input (iOS Safari) as well as mouse input."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement the \"Yes\" flow: when the user clicks/taps \"Yes\", replace the question/options with a success view that displays a cute meme image and the exact text: \"aww good choice 🥰\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "When he clicks yes show him an cute meme image telling him “aww good choice 🥰”"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Tapping/clicking \"Yes\" transitions to a new view/state that hides the \"Yes\"/\"No\" buttons.",
+        "The success view displays the meme image (bundled as a static asset) and the exact caption text: \"aww good choice 🥰\".",
+        "The success view is centered and mobile-friendly (image scales responsively without overflowing)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Apply a consistent romantic Valentine theme using a pink/white/red color scheme with a coherent, simple visual style suitable for a single-purpose romantic prompt (e.g., a Valentine card look with hearts/paper textures), and ensure all interactions/animations feel playful but not distracting.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The page should be themed romantically with pink, white and red colour scheme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Primary UI colors are pink/white/red (no default/unstyled template look).",
+        "Typography and spacing feel like a simple Valentine card (clear hierarchy: prompt > buttons).",
+        "Animations (No-button evade + emoji pops) match the theme and do not cause severe layout jank on mobile."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add the required generated image(s) to the frontend as static assets under `frontend/public/assets/generated/` and reference them directly from the UI (do not serve images via the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "show him an cute meme image"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated image file(s) exist under `frontend/public/assets/generated/`.",
+        "The UI loads the image(s) via a static path and displays them in the \"Yes\" success view.",
+        "No backend endpoints are added/required to fetch or generate the image at runtime."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Frontend must remain mobile-friendly and work in iOS mobile browsers.",
+    "Do not edit files under `frontend/src/components/ui` or other immutable paths listed in SYSTEM_CONTEXT.",
+    "No third-party auth or external services."
+  ],
+  "nonGoals": [
+    "Adding additional pages, navigation, accounts, or user profiles.",
+    "Persisting state or recording analytics/events.",
+    "Implementing a backend canister feature (this experience can be fully client-side)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Cute Valentine-themed meme-style illustration with the caption text “aww good choice 🥰” integrated, romantic pink/red/white palette (valentine-yes-meme.dim_1024x1024.png)"
+    ],
+    "edits": []
+  }
+}
